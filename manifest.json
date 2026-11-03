@@ -1,0 +1,10 @@
+{
+  "name": "DIHO KASIR KUPANG",
+  "short_name": "DIHO KUPANG",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#edf5f0",
+  "theme_color": "#003e30",
+  "description": "Aplikasi kasir, pemindaian UPC/barcode, dan manajemen stok DIHO KASIR KUPANG"
+}
