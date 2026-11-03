@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123e32"><meta name="description" content="DIHO KASIR KUPANG - kasir dan stok toko offline-first">
+<link rel="manifest" href="manifest.json">
+<title>DIHO KASIR KUPANG</title>
+<style>
+:root{--green:#123e32;--green2:#145744;--mint:#eaf4ee;--bg:#f3f6f4;--ink:#17372b;--muted:#687a70;--line:#dce6df;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}header{background:var(--green);color:white;padding:16px max(16px,env(safe-area-inset-left));display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:5}header b{font-size:19px;letter-spacing:.5px}header small{display:block;opacity:.8;font-size:11px}.pill{border:1px solid #ffffff55;border-radius:20px;padding:6px 10px;font-size:12px}nav{display:flex;gap:6px;overflow:auto;padding:10px;background:white;border-bottom:1px solid var(--line);position:sticky;top:62px;z-index:4}nav button{white-space:nowrap;background:white;color:var(--green);border:1px solid var(--line);padding:9px 12px;border-radius:10px}nav button.active{background:var(--green2);color:white;border-color:var(--green2)}main{max-width:1200px;margin:auto;padding:16px}.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 2px 8px #183b2b08}.stat{font-size:24px;font-weight:750;margin-top:5px}.muted{color:var(--muted);font-size:13px}h2{font-size:20px;margin:4px 0 14px}h3{font-size:16px;margin:0 0 10px}label{display:block;font-size:13px;font-weight:650;margin:10px 0 5px}input,select,textarea{width:100%;padding:11px;border:1px solid #cbd8cf;border-radius:9px;background:white;color:var(--ink);font:inherit}button{cursor:pointer;font:inherit}button.primary,.primary{background:var(--green2);color:white;border:0;border-radius:9px;padding:11px 14px;font-weight:650}button.secondary{background:var(--mint);color:var(--green);border:1px solid #cfe0d4;border-radius:9px;padding:10px 12px}button.danger{background:#fff0ef;color:var(--red);border:1px solid #f1cfcb;border-radius:9px;padding:8px 10px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.toolbar>*{flex:1;min-width:130px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;background:white;font-size:13px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);white-space:nowrap}th{background:#f7faf8}.right{text-align:right}.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px;margin-top:12px}.product{background:white;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:left;color:var(--ink);min-height:100px}.product b{display:block;margin:5px 0}.product small{color:var(--muted)}.checkout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.8fr);gap:14px}.cartline{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}.cartline small{display:block;color:var(--muted)}.total{font-size:25px;font-weight:800}.hidden{display:none!important}.notice{background:#fff8df;border:1px solid #f1dfa0;padding:11px;border-radius:10px;font-size:13px;margin:10px 0}.success{background:#e9f7ed;border:1px solid #c6e8d0;padding:10px;border-radius:9px}.empty{padding:25px;text-align:center;color:var(--muted)}footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}@media(max-width:700px){main{padding:11px}.checkout{grid-template-columns:1fr}nav{top:59px}header{padding-top:12px;padding-bottom:12px}.stat{font-size:21px}}
+@media print{header,nav,.no-print,footer{display:none!important}body{background:white}.page{display:none!important}#receiptPrint{display:block!important}.receipt{max-width:340px;margin:auto;color:#000;font:12px monospace}.receipt h2{text-align:center}}
+.robin-hero{position:relative;display:flex;align-items:flex-end;min-height:180px;max-height:290px;overflow:hidden;border-radius:16px;margin:0 0 14px;background:#dff3ed;border:1px solid var(--line)}
+.robin-hero img{width:100%;height:290px;object-fit:cover;object-position:center 35%;display:block}
+.robin-welcome{position:absolute;left:12px;bottom:12px;max-width:min(82%,340px);padding:12px 15px;background:#ffffffed;color:var(--green);border:1px solid #cfe0d4;border-radius:13px;box-shadow:0 3px 14px #123e3222}
+.robin-welcome strong,.robin-welcome span{display:block}.robin-welcome span{font-size:13px;margin-top:4px}
+
+/* DIHO premium responsive dashboard */
+:root{--green:#064b39;--green2:#08734e;--bg:#eef5f1}
+body{background:linear-gradient(145deg,#edf7f1,#f7faf8);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(100deg,#003d30,#08734e);padding:15px 20px;border-bottom:3px solid #b8e7d1}
+header b{font-size:clamp(20px,3vw,28px);letter-spacing:1px}
+header small{font-size:12px;letter-spacing:1px}
+.pill{background:#ffffff12;padding:8px 13px}
+nav{padding:10px 14px;gap:8px;box-shadow:0 3px 12px #0b503015}
+nav button{border-radius:12px;padding:11px 16px;font-weight:650}
+nav button.active{background:linear-gradient(120deg,#08734e,#0b9a61);box-shadow:0 4px 12px #08734e33}
+main{max-width:1440px;padding:22px}
+#dashboard .dash-heading{display:flex;align-items:center;justify-content:space-between;margin:0 0 16px}
+.dash-heading h2{font-size:clamp(23px,3vw,32px);margin:2px 0;color:#064b39}
+.dash-heading p{margin:0;color:#6c8277;font-size:13px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#16835c}
+.dash-mark{padding:9px 14px;border-radius:30px;background:#e0f2e8;color:#086143;font-weight:750}
+.dash-layout{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.robin-hero{position:relative;min-height:430px;max-height:570px;margin:0;border-radius:20px;overflow:hidden;border:1px solid #c8e3d3;box-shadow:0 8px 25px #0b50301a;background:#dff3ed}
+.robin-hero img{width:100%;height:100%;min-height:430px;max-height:570px;object-fit:cover;object-position:center 28%;display:block}
+.robin-welcome{left:16px;bottom:16px;max-width:85%;padding:13px 17px;background:#fffFf2;color:#07533c;border-radius:15px;box-shadow:0 4px 16px #063d2d30}
+.robin-welcome strong{font-size:20px}.robin-welcome span{font-size:14px}
+.dash-side{display:flex;flex-direction:column;gap:14px}
+.stats-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.stat-card{position:relative;min-height:126px;padding:17px;border-radius:17px;box-shadow:0 4px 16px #103d2c0d}
+.stat-card .stat{font-size:clamp(23px,3vw,30px);color:#07583e}
+.stat-icon{font-size:24px;display:block;margin-bottom:7px}
+.stat-card.sales{border-top:4px solid #07834f}.stat-card.goods{border-top:4px solid #2676d2}.stat-card.transactions{border-top:4px solid #7750bd}.stat-card.low{border-top:4px solid #d58a24}
+.quick-panel{background:linear-gradient(130deg,#064b39,#08734e);color:white;border-radius:17px;padding:16px;box-shadow:0 5px 18px #064b3928}
+.quick-panel h3{font-size:17px;margin:0 0 12px}
+.quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.quick-btn{background:#f7fffa;color:#07543d;border:1px solid #cde8d8;border-radius:12px;padding:12px 7px;font-size:12px;font-weight:750;min-height:76px}
+.quick-btn span{display:block;font-size:23px;margin-bottom:5px}
+.quick-btn:active{transform:scale(.97)}
+.dash-lower .card{border-radius:16px}
+@media(max-width:760px){
+ main{padding:13px}
+ #dashboard .dash-heading{margin-bottom:12px}
+ .dash-mark{font-size:11px;padding:7px 10px}
+ .dash-layout{grid-template-columns:1fr;gap:12px}
+ .robin-hero{min-height:300px;max-height:380px}
+ .robin-hero img{min-height:300px;height:380px;max-height:380px;object-position:center 27%}
+ .robin-welcome{left:10px;bottom:10px;padding:10px 12px;max-width:90%}
+ .robin-welcome strong{font-size:16px}
+ .robin-welcome span{font-size:12px}
+ .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .stat-card{min-height:108px;padding:12px}
+ .stat-card .stat{font-size:22px}
+ .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .quick-btn{min-height:72px;padding:9px 4px;font-size:11px}
+ .dash-lower{grid-template-columns:1fr}
+}
+
+:root{--green:#003e30;--green2:#087448;--mint:#e8f5ed;--bg:#edf5f0;--ink:#102f26;--line:#c9ddd1}
+body{background:#eaf4ef;color:#102f26;font-family:Arial,system-ui,sans-serif}
+.topbar{height:112px;position:relative;top:0;padding:10px 24px;background:linear-gradient(100deg,#002e25,#006747 65%,#003a2c);border-bottom:4px solid #7be0a0;display:flex;justify-content:space-between;z-index:8}
+.brand-lockup{display:flex;align-items:center;gap:16px}.brand-cart{font-size:52px}.brand-lockup b{font-size:clamp(22px,3.2vw,48px);font-weight:900;letter-spacing:1px}.brand-lockup b strong{color:#49ed66}.brand-lockup small{display:block;font-size:20px;font-weight:700}
+.onepiece-logo{align-self:center;color:#f8d34e;font-size:36px;font-weight:1000;text-shadow:2px 3px #071d3c,-1px -1px #071d3c;letter-spacing:2px}
+.admin-box{display:flex;align-items:center;gap:12px}.admin-box b{font-size:24px}.admin-box small{display:block;font-size:17px}.avatar{width:62px;height:62px;border-radius:50%;background:#e6f2f5;color:#003e30;display:grid;place-items:center;font-size:30px;border:3px solid #b4e5d0}.settings-shortcut{font-size:30px;background:transparent;color:white;border:0;border-left:1px solid #ffffff55;padding-left:20px}
+.sidebar{position:fixed;z-index:7;left:0;top:112px;bottom:0;width:122px;background:linear-gradient(#004d3a,#00372b);display:flex;flex-direction:column;gap:7px;padding:16px 7px;overflow:auto;border-right:2px solid #73d9a0}
+.sidebar button{min-height:88px;border:0;border-radius:12px;background:transparent;color:white;font-weight:700;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;font-size:15px}
+.sidebar button span{font-size:31px}.sidebar button.active{background:linear-gradient(140deg,#21bd5d,#07864b);box-shadow:0 4px 14px #001e1666}
+main{margin-left:122px;max-width:none;padding:17px 18px 0}
+.page{min-height:calc(100vh - 130px)}
+.welcome-line{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px}.welcome-line h2{font-size:26px;margin:0;color:#07543d}.eyebrow{font-size:11px;letter-spacing:2px;color:#16835c;font-weight:900}.live-tag{border:1px solid #a7d7bb;border-radius:30px;padding:8px 13px;color:#087448;background:#f6fff9;font-size:12px;font-weight:800}
+.dashboard-main{display:grid;grid-template-columns:minmax(360px,1.04fr) minmax(500px,1fr);gap:14px;min-height:calc(100vh - 225px)}
+.robin-stage{position:relative;min-height:590px;overflow:hidden;border-radius:17px;border:1px solid #b4d9c5;background:#c5e9f8}
+.robin-stage img{width:100%;height:100%;min-height:590px;object-fit:cover;object-position:center 30%;display:block}
+.robin-caption{position:absolute;top:15px;left:15px;max-width:78%;background:#ffffffed;border:2px solid #0a3027;border-radius:24px;padding:13px 17px;color:#102f26;box-shadow:0 4px 14px #1236}.robin-caption b{display:block;font-size:19px}.robin-caption span{font-weight:800;color:#c22c46;font-style:italic}
+.right-dashboard{display:flex;flex-direction:column;gap:12px;min-width:0}
+.summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:white;border:1px solid #c4d8cd;border-radius:18px;padding:14px 6px;box-shadow:0 5px 18px #003e3010}
+.summary-card{text-align:center;padding:5px 8px;border-right:1px solid #a9bdb3;min-width:0}.summary-card:last-child{border:0}.sum-icon{font-size:38px;display:block}.summary-card small{display:block;font-size:clamp(12px,1.25vw,19px);color:#111;margin:4px 0}.summary-card b{display:block;color:#087448;font-size:clamp(19px,2.3vw,34px);white-space:nowrap}.summary-card em{font-size:13px;color:#0b9a52;font-style:normal}.summary-card.blue b{color:#1767cf}.summary-card.purple b{color:#5422a8}
+.scan-panel{background:#fff;border:1px solid #c0d4c9;border-radius:17px;overflow:hidden;box-shadow:0 5px 18px #003e3010;flex:1}
+.panel-title{background:linear-gradient(90deg,#00513b,#08794c);color:white;padding:10px 16px;font-size:25px;font-weight:900}
+.scan-body{padding:12px;display:flex;flex-direction:column;gap:10px}
+.scan-row{display:flex;align-items:center;gap:8px;border:1px solid #718b80;border-radius:11px;padding:3px 4px;background:#fff;min-height:52px}
+.scan-row input{border:0!important;outline:none;box-shadow:none!important;font-size:18px;padding:8px 5px;min-width:0}
+.scan-symbol{font-size:30px;color:#101c22;padding:0 8px}.scan-btn{background:#087448;color:#fff;border:0;border-radius:9px;width:65px;align-self:stretch;font-size:27px}
+.search-row{padding-left:8px}.search-row .scan-symbol{font-size:38px}
+.camera-actions{display:flex;gap:8px}.camera-main{width:100%;border:0;border-radius:10px;background:#e6f6eb;color:#07543d;padding:10px;font-weight:800}.camera-stop{border:0;border-radius:9px;background:#ffe9e7;color:#a22;padding:8px}
+.camera-panel{border:1px solid #c8ddd0;border-radius:12px;padding:8px}.camera-panel video{width:100%;max-height:210px;background:#111;border-radius:8px}.camera-note{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px}
+.catalog-list{display:grid;grid-template-columns:1fr;gap:7px;max-height:175px;overflow:auto}
+.catalog-list .product{display:flex;align-items:center;justify-content:space-between;min-height:50px;text-align:left;border-radius:10px;padding:8px 12px}.catalog-list .product b{margin:0}.catalog-list .product small{margin-left:auto;margin-right:12px}
+.quick-actions{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.quick-actions button{min-height:86px;border-radius:14px;border:1px solid #b6d5c4;background:linear-gradient(#fff,#eaf8ef);color:#064b39;font-weight:800;box-shadow:0 3px 10px #064b3915}
+.quick-actions button span{display:block;font-size:29px;margin-bottom:3px}
+.dashboard-bottom{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;margin:12px -18px 0;background:linear-gradient(90deg,#003d2d,#087448,#003d2d);color:#fff;border-top:3px solid #a6e8bc}
+.bottom-brand{font-size:22px;font-weight:900;color:#f6d25d}.bottom-brand i{font-size:18px;color:white;margin-left:15px}.bottom-motto{text-align:right;font-weight:900}.bottom-motto small{font-weight:500}
+.dash-lower{margin-top:12px}
+#kasir .checkout{grid-template-columns:1fr}
+@media(max-width:900px){.onepiece-logo{display:none}.dashboard-main{grid-template-columns:1fr}.robin-stage{min-height:340px;max-height:450px}.robin-stage img{min-height:340px;height:450px;max-height:450px}.right-dashboard{gap:10px}.summary-grid{padding:8px 3px}.quick-actions{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.topbar{height:82px;padding:8px 12px}.brand-cart{font-size:35px}.brand-lockup{gap:8px}.brand-lockup b{font-size:23px}.brand-lockup small{font-size:12px}.admin-box .avatar{width:39px;height:39px;font-size:18px}.admin-box b{font-size:14px}.admin-box small{font-size:11px}.settings-shortcut{font-size:22px;padding-left:8px}
+.sidebar{top:82px;width:66px;padding:8px 4px}.sidebar button{min-height:66px;font-size:9px}.sidebar button span{font-size:22px}
+main{margin-left:66px;padding:10px 8px 0}.page{min-height:calc(100vh - 95px)}.welcome-line h2{font-size:19px}.live-tag{font-size:9px;padding:6px 8px}
+.dashboard-main{gap:9px}.robin-stage{min-height:260px;max-height:330px}.robin-stage img{min-height:260px;height:330px;max-height:330px;object-position:center 26%}.robin-caption{top:8px;left:8px;padding:8px 10px}.robin-caption b{font-size:13px}.robin-caption span{font-size:12px}
+.summary-card{padding:4px 3px}.sum-icon{font-size:25px}.summary-card small{font-size:10px}.summary-card b{font-size:16px}.summary-card em{font-size:9px}
+.panel-title{font-size:18px;padding:9px 12px}.scan-body{padding:8px;gap:7px}.scan-row{min-height:43px}.scan-row input{font-size:13px}.scan-symbol{font-size:23px;padding:0 4px}.scan-btn{width:42px;font-size:21px}.quick-actions{gap:5px}.quick-actions button{min-height:67px;font-size:10px}.quick-actions button span{font-size:22px}
+.dashboard-bottom{padding:7px 9px;margin:9px -8px 0}.bottom-brand{font-size:13px}.bottom-brand i{font-size:11px;margin-left:4px}.bottom-motto{font-size:10px}.bottom-motto small{font-size:8px}
+.dash-lower{grid-template-columns:1fr}.checkout{grid-template-columns:1fr}
+}
+
+/* DIHO motion & feature art */
+@media(prefers-reduced-motion:no-preference){
+ .topbar{background-size:200% 200%;animation:diho-gradient 9s ease infinite}
+ .robin-stage img{animation:mascot-float 5s ease-in-out infinite;transform-origin:50% 75%}
+ .robin-caption{animation:caption-in .8s cubic-bezier(.2,.8,.2,1) both}
+ .summary-card,.scan-panel,.card,.product,.quick-actions button{transition:transform .25s,box-shadow .25s,border-color .25s}
+ .summary-card:hover,.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #064b3920}
+ .quick-actions button:hover,.product:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 9px 20px #064b3925}
+ .page.active{animation:page-enter .38s cubic-bezier(.2,.8,.2,1) both}
+}
+@keyframes diho-gradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes mascot-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-7px) scale(1.012)}}
+@keyframes caption-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes page-enter{from{opacity:.25;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes feature-glow{0%,100%{filter:drop-shadow(0 0 0 #7be0a000)}50%{filter:drop-shadow(0 0 12px #7be0a0aa)}}
+@keyframes ripple-out{to{transform:scale(18);opacity:0}}
+@keyframes success-bounce{0%,100%{transform:scale(1)}35%{transform:scale(1.025)}65%{transform:scale(.99)}}
+.feature-visual{position:relative;display:flex;align-items:center;gap:15px;overflow:hidden;margin:0 0 15px;padding:15px 20px;border-radius:18px;border:1px solid #b8dcca;background:linear-gradient(110deg,#fafffc,#e0f5e9);color:#064b39;min-height:96px}
+.feature-visual:before,.feature-visual:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.feature-visual:before{width:150px;height:150px;right:8%;top:-85px;background:#76dba755}
+.feature-visual:after{width:90px;height:90px;right:22%;bottom:-65px;background:#48a9dc33}
+.feature-art{width:66px;height:66px;flex:0 0 66px;display:grid;place-items:center;border-radius:19px;background:linear-gradient(145deg,#087448,#21bd75);font-size:36px;box-shadow:0 7px 18px #064b3925;animation:feature-glow 4s ease-in-out infinite}
+.feature-visual h2{margin:0;font-size:clamp(18px,2.5vw,25px)}
+.feature-visual p{margin:4px 0 0;color:#547467;font-size:13px}
+.feature-visual .feature-orbit{position:absolute;right:18px;font-size:48px;opacity:.25;transform:rotate(-12deg)}
+.sound-control{display:inline-flex;align-items:center;gap:7px;border:1px solid #b6d5c4;background:#f7fffa;color:#064b39;border-radius:24px;padding:8px 12px;font-weight:750}
+.sound-control[aria-pressed="false"]{background:#f1f3f2;color:#65756d}
+.fx-toast{position:fixed;z-index:99;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#064b39;color:white;padding:12px 18px;border-radius:30px;box-shadow:0 8px 30px #002e2540;font-weight:750;transition:opacity .25s,transform .25s}
+.fx-toast.show{opacity:1;transform:translate(-50%,0)}
+.fx-ripple{position:fixed;z-index:90;pointer-events:none;border-radius:50%;width:12px;height:12px;background:#48d78b88;transform:scale(0);animation:ripple-out .55s ease-out forwards}
+.fx-success{animation:success-bounce .6s ease}
+@media(max-width:600px){.feature-visual{padding:11px 12px;min-height:78px;gap:10px}.feature-art{width:52px;height:52px;flex-basis:52px;font-size:29px;border-radius:15px}.feature-visual .feature-orbit{right:8px;font-size:36px}.feature-visual p{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+</style></head>
+<body>
+<header class="topbar"><div class="brand-lockup"><span class="brand-cart">🛒</span><div><b>DIHO <strong>KASIR PRO</strong></b><small>Kasir • Stok Barang • Kupang</small></div></div><div class="onepiece-logo">☠ <span>ONE PIECE</span> ☠</div><div class="admin-box"><button id="soundToggle" class="sound-control" type="button" aria-pressed="true" title="Aktif/nonaktifkan suara">🔊 Suara</button><span class="avatar">●</span><div><b>DIHO KUPANG</b><small>Admin</small></div><button class="settings-shortcut" data-page="pengaturan">⚙</button></div></header>
+<nav class="sidebar no-print" id="nav">
+<button class="active" data-page="dashboard"><span>⌂</span>Beranda</button><button data-page="produk"><span>⬡</span>Barang</button><button data-page="kasir"><span>🛒</span>Transaksi</button><button data-page="laporan"><span>▥</span>Laporan</button><button data-page="pengaturan"><span>▤</span>Database</button><button data-page="pengaturan"><span>⚙</span>Pengaturan</button>
+</nav>
+<main>
+<section class="page active" id="dashboard">
+<div class="welcome-line"><div><span class="eyebrow">PANEL KONTROL TOKO</span><h2>Beranda DIHO</h2></div><span class="live-tag">● SISTEM AKTIF</span></div>
+<div class="dashboard-main">
+  <div class="robin-stage"><img src="robin-maskot.jpg" alt="Maskot DIHO" loading="eager"><div class="robin-caption"><b>Selamat datang di DIHO KASIR KUPANG</b><span>Semangat berjualan! ♥</span></div></div>
+  <div class="right-dashboard">
+    <div class="summary-grid">
+      <div class="summary-card"><span class="sum-icon">🛒</span><small>Total Penjualan</small><b id="dSales">Rp0</b><em>Hari ini</em></div>
+      <div class="summary-card blue"><span class="sum-icon">📦</span><small>Total Barang</small><b id="dProducts">0</b><em>Produk tersimpan</em></div>
+      <div class="summary-card purple"><span class="sum-icon">📊</span><small>Transaksi Hari Ini</small><b id="dCount">0</b><em>Transaksi</em></div>
+    </div>
+    <div class="scan-panel">
+      <div class="panel-title">Tambah Barang</div>
+      <div class="scan-body">
+        <div class="scan-row"><span class="scan-symbol">▥</span><input id="scanUPC" inputmode="numeric" placeholder="Scan UPC / Kode UPC" autocomplete="off"><button id="addUPC" class="scan-btn" aria-label="Tambah UPC">▣</button></div>
+        <div class="scan-row"><span class="scan-symbol">▥</span><input id="scanBarcode" inputmode="numeric" placeholder="Scan Barcode" autocomplete="off"><button id="addBarcode" class="scan-btn" aria-label="Tambah barcode">▣</button></div>
+        <div class="scan-row search-row"><span class="scan-symbol">⌕</span><input id="searchProduct" placeholder="Cari Nama Barang..." autocomplete="off"></div>
+        <div class="camera-actions"><button class="camera-main" id="cameraScanBtn" type="button">▣ Scan Kamera UPC / Barcode</button><button class="camera-stop hidden" id="stopCameraBtn" type="button">Tutup</button></div>
+        <div id="cameraPanel" class="camera-panel hidden"><video id="barcodeVideo" autoplay muted playsinline></video><div class="camera-note"><span id="cameraStatus">Arahkan barcode ke kamera.</span><button class="danger" id="cameraCloseText" type="button">Tutup kamera</button></div></div>
+        <div class="catalog-list" id="productGrid"></div>
+      </div>
+    </div>
+    <div class="quick-actions">
+      <button data-page="kasir"><span>🛒</span>Keranjang</button>
+      <button data-page="produk"><span>📦</span>Daftar Barang</button>
+      <button data-page="transaksi"><span>🧾</span>Transaksi</button>
+      <button data-page="laporan"><span>▥</span>Laporan</button>
+      <button data-page="pengaturan"><span>▤</span>Backup Data</button>
+    </div>
+  </div>
+</div>
+<div class="dashboard-bottom"><div class="bottom-brand">☠ ONE PIECE <i>Dream Big, Sell More!</i></div><div class="bottom-motto">DIHO KASIR KUPANG<br><small>Bersama One Piece, Usaha Makin Seru!</small></div></div>
+<div class="grid dash-lower"><div class="card"><h3>Transaksi terbaru</h3><div id="recent"></div></div><div class="card"><h3>Pengingat stok menipis</h3><div id="lowList"></div><div class="muted">Stok menipis: <b id="dLow">0</b> produk</div></div></div>
+<input id="scan" class="hidden" autocomplete="off"><button id="addScan" class="hidden" type="button">Tambah</button>
+</section>
+<section class="page" id="kasir"><section class="feature-visual" aria-label="Kasir & Pembayaran"><span class="feature-art" aria-hidden="true">🛒</span><div><h2>Kasir & Pembayaran</h2><p>Efek kasir: bunyi klik, penambahan barang, dan nada transaksi.</p></div><span class="feature-orbit" aria-hidden="true">🛒</span></section><h2>Keranjang & Pembayaran</h2><div class="checkout"><div class="card"><h3>Keranjang</h3><div id="cart"><div class="empty">Belum ada barang</div></div><div class="row" style="margin-top:12px"><span class="muted">Subtotal</span><b id="subtotal">Rp0</b></div>
+<label>Diskon transaksi (Rp)</label><input id="discount" type="number" min="0" value="0"><div class="row" style="margin:12px 0"><span>Total</span><span class="total" id="grandTotal">Rp0</span></div>
+<label>Metode pembayaran</label><select id="payMethod"><option>Tunai</option><option>QRIS (konfirmasi manual)</option><option>Transfer</option><option>Kartu</option></select>
+<label>Uang diterima (Rp)</label><input id="paid" type="number" min="0" placeholder="Masukkan nominal pembayaran"><div class="row" style="margin:8px 0"><span class="muted">Kembalian</span><b id="change">Rp0</b></div>
+<button class="primary" id="checkoutBtn" style="width:100%">Selesaikan transaksi</button><p class="muted">Untuk QRIS/transfer/kartu, pastikan pembayaran benar-benar diterima sebelum menyelesaikan transaksi.</p>
+</div></div></section>
+<section class="page" id="produk"><section class="feature-visual" aria-label="Barang & Stok"><span class="feature-art" aria-hidden="true">📦</span><div><h2>Barang & Stok</h2><p>Kelola katalog dengan visual khusus dan animasi interaktif.</p></div><span class="feature-orbit" aria-hidden="true">📦</span></section>
+<h2>Produk & stok</h2><div class="card"><h3>Tambah / edit produk</h3><input id="editId" type="hidden"><div class="grid">
+<div><label>Nama barang *</label><input id="pName" placeholder="Contoh: Air mineral 600 ml"></div>
+<div><label>UPC</label><input id="pUpc" placeholder="Contoh: 0000089"></div>
+<div><label>Barcode biasa</label><input id="pBarcode" placeholder="Contoh: 473"></div>
+<div><label>SKU / kode internal</label><input id="pSku" placeholder="Kode unik toko"></div>
+<div><label>Kategori</label><input id="pCategory" placeholder="Minuman"></div>
+<div><label>Harga modal (Rp)</label><input id="pCost" type="number" min="0" value="0"></div>
+<div><label>Harga jual (Rp) *</label><input id="pPrice" type="number" min="0" value="0"></div>
+<div><label>Jumlah stok</label><input id="pStock" type="number" min="0" value="0"></div>
+<div><label>Stok minimum</label><input id="pMin" type="number" min="0" value="5"></div>
+<div><label>Foto produk (opsional)</label><input id="pImage" type="file" accept="image/*"></div>
+</div><div class="row" style="margin-top:12px"><button class="primary" id="saveProduct">Simpan produk</button><button class="secondary" id="resetProduct">Kosongkan</button></div></div>
+<div class="card" style="margin-top:14px"><div class="row"><h3 style="flex:1">Daftar barang</h3><input id="productFilter" placeholder="Cari nama / UPC / barcode" style="max-width:300px"></div><div class="tablewrap"><table><thead><tr><th>Barang</th><th>UPC</th><th>Barcode</th><th>Harga jual</th><th>Stok</th><th>Aksi</th></tr></thead><tbody id="productRows"></tbody></table></div></div>
+</section>
+<section class="page" id="transaksi"><section class="feature-visual" aria-label="Riwayat Transaksi"><span class="feature-art" aria-hidden="true">🧾</span><div><h2>Riwayat Transaksi</h2><p>Tinjau transaksi dengan efek navigasi yang lembut.</p></div><span class="feature-orbit" aria-hidden="true">🧾</span></section><h2>Riwayat transaksi</h2><div class="card"><div class="toolbar"><input id="txSearch" placeholder="Cari nomor transaksi"><input id="txDate" type="date"></div><div class="tablewrap"><table><thead><tr><th>No. transaksi</th><th>Tanggal</th><th>Metode</th><th>Total</th><th>Aksi</th></tr></thead><tbody id="txRows"></tbody></table></div></div></section>
+<section class="page" id="laporan"><section class="feature-visual" aria-label="Laporan Penjualan"><span class="feature-art" aria-hidden="true">📊</span><div><h2>Laporan Penjualan</h2><p>Ringkasan penjualan dengan aksen visual analitik.</p></div><span class="feature-orbit" aria-hidden="true">📊</span></section><h2>Laporan penjualan</h2><div class="toolbar"><input type="date" id="reportFrom"><input type="date" id="reportTo"><button class="primary" id="runReport">Tampilkan</button><button class="secondary" id="exportCsv">Ekspor CSV</button></div><div class="grid"><div class="card"><div class="muted">Omzet periode</div><div class="stat" id="rSales">Rp0</div></div><div class="card"><div class="muted">Estimasi laba kotor</div><div class="stat" id="rProfit">Rp0</div></div><div class="card"><div class="muted">Jumlah transaksi</div><div class="stat" id="rCount">0</div></div></div><div class="card" style="margin-top:14px"><h3>Ringkasan produk terjual</h3><div id="topProducts"></div></div></section>
+<section class="page" id="pengaturan"><section class="feature-visual" aria-label="Pengaturan & Database"><span class="feature-art" aria-hidden="true">⚙️</span><div><h2>Pengaturan & Database</h2><p>Kelola data, backup, dan preferensi aplikasi.</p></div><span class="feature-orbit" aria-hidden="true">⚙️</span></section><h2>Pengaturan & database</h2><div class="grid">
+<div class="card"><h3>Identitas toko</h3><label>Nama toko</label><input id="storeName" value="DIHO KASIR KUPANG"><label>Alamat / keterangan struk</label><input id="storeAddress" placeholder="Alamat toko"><button class="primary" id="saveSettings" style="margin-top:12px">Simpan identitas</button></div>
+<div class="card"><h3>Backup & pemulihan</h3><p class="muted">Simpan salinan data produk dan transaksi ke file JSON. Simpan backup secara berkala.</p><button class="primary" id="backupBtn">Unduh backup JSON</button><label>Pulihkan dari backup JSON</label><input type="file" id="restoreFile" accept=".json,application/json"><button class="secondary" id="restoreBtn" style="margin-top:8px">Pulihkan data</button></div>
+<div class="card"><h3>Sinkronisasi online</h3><p class="muted">Versi ini bekerja offline-first. Untuk sinkronisasi antar-HP/komputer, hubungkan backend database bersama (misalnya Supabase/Firebase) dan atur kredensial proyek.</p><div class="notice">Data saat ini tersimpan di perangkat ini. Backup/restore dapat memindahkan data antarperangkat, tetapi belum melakukan sinkronisasi otomatis.</div></div>
+<div class="card"><h3>Data awal demo</h3><p class="muted">Isi contoh produk agar bisa mencoba alur kasir.</p><button class="secondary" id="demoBtn">Tambahkan produk contoh</button><button class="danger" id="clearBtn" style="margin:8px 0 0 8px">Hapus semua data</button></div>
+</div></section>
+<section id="receiptPrint" class="hidden"></section>
+</main><footer>DIHO KASIR KUPANG • Simpan backup data secara berkala</footer><div id="fxToast" class="fx-toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body></html>
